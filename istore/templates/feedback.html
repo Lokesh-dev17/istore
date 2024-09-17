@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Feedback Form</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <style>
+    body {
+      background-image: url('https://img.freepik.com/premium-vector/we-want-your-feedback-icon-flat-style-survey-banner-vector-illustration-isolated-background-speech-bubble-sign-business-concept_157943-19648.jpg'); /* Replace 'path_to_your_image.jpg' with the actual path to your background image */
+      background-size: 90%;
+      background-position: center;
+      font-family: Arial, sans-serif;
+
+    }
+
+    .container {
+      margin-top: 50px;
+    }
+
+    .feedback-box {
+      max-width: 400px;
+      margin: auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    label {
+      color: #555;
+    }
+
+    button {
+      margin-top: 10px;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">iStore</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/">Home</a></li>
+      <li><a href="/products">Products</a></li>
+      <li><a href="/feedback">Feedback</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/sign_up"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="/log_in"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href="/log_out"><span class="glyphicon glyphicon-log-out"></span> Log-out</a></li>
+    </ul>
+  </div>
+</nav>
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible my-0">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+   {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+
+<div class="container">
+  <div class="feedback-box">
+    <h2>Feedback Form</h2>
+    <form action="/feedback" method="post">
+        {% csrf_token %}
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number:</label>
+        <input type="tel" class="form-control" id="phone" name="phone" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="feedback">Feedback:</label>
+        <textarea class="form-control" id="feedback" name="feedback" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit Feedback</button>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}PRODUCTS{% endblock title %}
+
+{% block head %}
+  <style>
+    /* Custom CSS for products page */
+    body {
+      background-image: url('media/pics/backgound_1.jpg');
+      background-size: cover;
+      background-position: center;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0); /* Completely transparent background for container */
+    }
+    .card {
+      background-color: rgba(0, 0, 0, 0); /* Transparent white background for cards */
+      border-radius: 10px;
+    }
+    .card-body {
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0); /* Completely transparent background for card body */
+    }
+  </style>
+{% endblock head %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        {% for prods in prod %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src='/media/{{prods.prod_img}}' class="card-img-top" alt={{prods.prod_name}}
+                     width="300" 
+                     height="400" 
+                />
+                <div class="card-body">
+                    <h5 class="card-title">{{prods.prod_name}}</h5>
+                    <p>Quantity: {{prods.prod_quantity}}</p>
+                    <p>Color: {{prods.prod_colour}}</p>
+                    <p>Price: Rs. {{prods.prod_price}}</p>
+                    <a href="/sales-book" class="btn btn-primary">BUY</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock body %}

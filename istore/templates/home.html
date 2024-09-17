@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{% block title %}iStore{% endblock title %}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Custom CSS for iStore */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa; /* Light gray background */
+      margin: 0;
+    }
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+      background-color: black; /* Purple navbar */
+      border: none;
+    }
+    .navbar-brand {
+      font-size: 24px;
+      color: #ffffff; /* White text */
+    }
+    .navbar-brand:hover {
+      color: #ffffff; /* White text on hover */
+    }
+    .navbar-nav li a {
+      color: #ffffff; /* White text */
+    }
+    .navbar-nav li a:hover {
+      color: #ffffff; /* White text on hover */
+    }
+    .jumbotron {
+  background-image: url('https://img.freepik.com/free-photo/paper-bags-different-colors-blue-background-top-view_169016-43755.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #ffffff; /* White text */
+  padding: 100px 25px; /* Padding for content */
+  margin-bottom: 0;
+  height: 100vh; /* Full height of viewport */
+}
+
+    .jumbotron h1 {
+      font-size: 48px;
+      color: black; /* Change text color */
+    }
+    .jumbotron p {
+      font-size: 20px;
+      color: black; /* Change text color */
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">iStore</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/">Home</a></li>
+      <li><a href="/products">Products</a></li>
+      <li><a href="/feedback">Feedback</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/sign_up"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="/log_in"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href="/log_out"><span class="glyphicon glyphicon-log-out"></span> Log-out</a></li>
+    </ul>
+  </div>
+</nav>
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible my-0">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+   {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+
+<div class="jumbotron text-center">
+  <h1>Welcome to iStore</h1>
+  <p>Your one-stop shop for all your favorite iPhone products!</p>
+</div>
+
+</body>
+</html>
